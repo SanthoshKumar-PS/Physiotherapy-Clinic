@@ -1,3 +1,4 @@
+import { developerRedirectLinks } from "@/lib/redirectLinks";
 
 
 const Footer = () => {
@@ -67,7 +68,7 @@ const Footer = () => {
 
             <div className="flex gap-3 sm:gap-4">
               <a
-                href="https://www.linkedin.com/in/santhosh-kumar-periyanahalli-sakthivel/"
+                href={developerRedirectLinks.linkedIn}
                 target="_blank"
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-background/10 hover:bg-background/20 rounded-full flex items-center justify-center transition-colors"
               >
@@ -78,7 +79,7 @@ const Footer = () => {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/919597889163"
+                href={developerRedirectLinks.whatsapp}
                 target="_blank"
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-background/10 hover:bg-background/20 rounded-full flex items-center justify-center transition-colors"
               >
@@ -89,7 +90,7 @@ const Footer = () => {
 
               {/* Call Button */}
               <a
-                href="tel:+919597889163"
+                href={developerRedirectLinks.call}
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-background/10 hover:bg-background/20 rounded-full flex items-center justify-center transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24">

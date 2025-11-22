@@ -1,3 +1,4 @@
+import { Toaster } from "sonner"
 import About from "./components/About"
 import Contact from "./components/Contact"
 import FAQ from "./components/FAQ"
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <div className='min-h-screen'>
+      <Toaster richColors position="top-center" />
       <Hero />
       <About />
       <Services />

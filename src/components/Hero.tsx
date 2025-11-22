@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button"
 import { Phone } from 'lucide-react';
+import {  redirectLinks, SHOW_PHONE_NUMBER } from '@/lib/redirectLinks';
 
 const Hero = () => {
   return (
@@ -49,9 +50,9 @@ const Hero = () => {
                         variant='outline'
                         className='w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white-30 text-white hover:bg-white/20 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-full hover:text-green-500'
                     >
-                        <a href="tel:+919597889163" className='flex items-center justify-center '>
+                        <a href={redirectLinks.call} className='flex items-center justify-center '>
                             <Phone className='mr-2 h-4 w-4 sm:h-5 sm:w-5'/>
-                            <span className='text-sm sm:text-base'>Call: +91-9597889163</span>
+                            <span className='text-sm sm:text-base'>Call: {SHOW_PHONE_NUMBER}</span>
                         </a>
                     </Button>
 

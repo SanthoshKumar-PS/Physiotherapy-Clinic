@@ -4,20 +4,59 @@ import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-const Contact = () => {
+import emailjs from "emailjs-com";
+import { redirectLinks, SHOW_PHONE_NUMBER } from '@/lib/redirectLinks';
+import { toast } from 'sonner';
+  const Contact = () => {
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
   const [formData, setFormData] = useState({
     name:"",
     phone:"",
     email:"",
     message:""
   });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleContactSubmite = (e:React.FormEvent) => {
+  const handleContactSubmit =async (e:React.FormEvent) => {
     e.preventDefault();
-    //TODO: Show toast
-      // title: "Appointment Request Received!",
-      // description: "We'll contact you shortly to confirm your booking.",
-    setFormData({name:"", phone:"", email:"", message:""});
+    try {
+      setIsLoading(true);
+      await emailjs
+        .send(
+          serviceId,
+          templateId,
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            message: formData.message,
+          },
+          publicKey
+        )
+        toast.success("Submitted Successfully!", {
+          description: "We received your enquiry.",
+          style: {
+            backgroundColor: "#3b82f6",  // blue-800
+            color: "white",
+            border: "1px solid #3b82f6",
+          },
+        });
+      setFormData({name:"", phone:"", email:"", message:""});
+    } catch (error:any) {
+        toast.error("Failed to Submit!", {
+          description: "Try again after sometime.",
+          style: {
+            backgroundColor: "#dc2626",
+            color: "white",
+            border: "1px solid #b91c1c",
+          },
+        });
+        console.log("Error occured while submitting form")
+    } finally{
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -58,8 +97,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className='font-semibold text-gray-700/80 mb-1 text-sm sm:text-base'>Phone</h4>
-                  <a href='tel:+919597889163' className='text-sm sm:text-base text-gray-600/90 hover:text-blue-500 transition-colors'>
-                    +91-9597889163
+                  <a href={redirectLinks.call} className='text-sm sm:text-base text-gray-600/90 hover:text-blue-500 transition-colors'>
+                    {SHOW_PHONE_NUMBER}
                   </a>
                 </div>
               </div>
@@ -72,7 +111,7 @@ const Contact = () => {
                   <h4 className='font-semibold text-gray-700/80 mb-1 text-sm sm:text-base'>
                     Email
                   </h4>
-                  <a href="mailto:santhoshkumarsakthi2003@gmail.com" className='text-sm sm:text-base text-gray-600/90 hover:text-blue-500 transition-colors break-all'>
+                  <a href={redirectLinks.email} className='text-sm sm:text-base text-gray-600/90 hover:text-blue-500 transition-colors break-all'>
                     santhoshkumarsakthi2003@gmail.com
                   </a>
                 </div>
@@ -87,8 +126,7 @@ const Contact = () => {
                   <h4 className='font-semibold text-gray-700/80 mb-1 text-sm sm:text-base'>Location</h4>
                   <p className='text-sm sm:text-base text-gray-600/90 hover:text-blue-500'   
                   onClick={() =>
-                    window.open(
-                      "https://www.google.com/maps/search/?api=1&query=Gayathri+Physiotherapy+Clinic%2C+16+Agahara+Street%2C+Kariamangalam%2C+635111",
+                    window.open(redirectLinks.maps,
                       "_blank"
                     )}>Karimangalam</p>
                 </div>
@@ -112,7 +150,7 @@ const Contact = () => {
                 size="lg"
                 asChild
               >
-                <a href="tel:+919597889163" className='flex items-center justify-center'>
+                <a href={redirectLinks.call} className='flex items-center justify-center'>
                   <Phone className='mr-2 h-4 w-4 sm:h-5 sm:w-5'/>
                   <span className='text-sm sm:text-base'>Call Now</span>
                 </a>
@@ -122,7 +160,7 @@ const Contact = () => {
                 size='lg'
                 asChild
               >
-                <a href="https://wa.me/919597889163" target='_blank' rel='noopener noreferrer' className='flex items-center justify-center'>
+                <a href={redirectLinks.whatsapp} target='_blank' rel='noopener noreferrer' className='flex items-center justify-center'>
                 <MessageCircle className='mr-2 h-4 w-4 sm:h-5 sm:w-5'/>
                 <span className='text-sm sm:text-base'>Whatsapp Now</span>
                 </a>
@@ -141,7 +179,7 @@ const Contact = () => {
             <h3 className='text-xl sm:text-2xl font-semibold text-gray-700/80 mb-5 sm:mb-6'>
               Book an Appointment
             </h3>
-            <form onSubmit={handleContactSubmite} 
+            <form onSubmit={handleContactSubmit} 
               className='space-y-3.5 sm:space-y-4'
             >
               <div>
@@ -187,10 +225,11 @@ const Contact = () => {
               </div>
               <Button
                 type='submit'
+                disabled={isLoading}
                 className='w-full bg-blue-500 hover:bg-blue-500/90'
                 size='lg'
               >
-                Submit request
+                {isLoading?"Submitting...":"Submit request"}
               </Button>
 
 
