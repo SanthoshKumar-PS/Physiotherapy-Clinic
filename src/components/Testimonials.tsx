@@ -29,7 +29,7 @@ const testimonials = [
 ];
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-12 sm:py-16 md:py-20 bg-green-100">
+    <section id="testimonials" className="py-12 sm:py-16 md:py-20 bg-blue-200/50">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{opacity:0, y:20}}
