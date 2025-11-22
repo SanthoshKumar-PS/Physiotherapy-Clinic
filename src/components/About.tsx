@@ -1,4 +1,3 @@
-import { div, section } from "framer-motion/client";
 import { Award, DollarSign, Heart, Home, PhoneCall, Users } from "lucide-react";
 import {motion} from 'framer-motion';
 

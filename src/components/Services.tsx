@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { section } from "framer-motion/client";
 import { 
   Activity, 
   Bone, 
