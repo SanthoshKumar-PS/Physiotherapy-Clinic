@@ -5,9 +5,9 @@ import {  redirectLinks, SHOW_PHONE_NUMBER } from '@/lib/redirectLinks';
 
 const Hero = () => {
   return (
-    <section className='relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-500 to-blue-500/80'>
+    <section className='relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-500 to-blue-500/50'>
         <div className='absolute inset-0 bg-black/20 z-10'/>
-        <img src="/hero.jpg" alt="Gayathri Physiotherapy Hero Image" 
+        <img src="/hero2.jpg" alt="Gayathri Physiotherapy Hero Image" 
          className='absolute inset-0 w-full h-full object-cover blur-[2px]'
         />
 
@@ -26,9 +26,20 @@ const Hero = () => {
                     initial={{opacity:0, y:30}}
                     animate={{opacity:1, y:0}}
                     transition={{duration: 0.8, delay:0.2}}
-                    className='text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 '
+                    className='text-base sm:text-lg md:text-xl lg:text-2xl text-white/90  '
                 >
                     Expert Home Physiotherapy Care, At Your Doorstep.
+                </motion.p>
+
+                <motion.p
+                    initial={{opacity:0, y:30}}
+                    animate={{opacity:1, y:0}}
+                    transition={{duration: 0.8, delay:0.2}}
+                    className='text-xs sm:text-sm md:text-md lg:text-lg text-white/90 max-w-sm mx-4 mx-auto '
+                >
+                    <p>Agrahara Street, DBS ATM Backside</p>
+                    <p>Karimangalam, Dharmapuri, Tamil Nadu</p>
+                    <p>Pin: 635 111</p>
                 </motion.p>
 
                 <motion.div
