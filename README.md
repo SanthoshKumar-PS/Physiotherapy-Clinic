@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# 🏥 Gayathri Physiotherapy Clinic Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive physiotherapy clinic website built with **React + Vite** and deployed on **Vercel**.  
+The project showcases the clinic’s services, patient testimonials, appointment booking, FAQs, and more — all in a clean and highly optimized UI.
 
-Currently, two official plugins are available:
+Live Website: **https://gayathri-physiotherapy-clinic.vercel.app/**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### ⭐ Hero Section  
+A clean, welcoming hero banner that highlights the clinic’s mission and services.
 
-## Expanding the ESLint configuration
+### ⭐ About Section  
+Information about the clinic, physiotherapists, and their trusted experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ⭐ Services Section  
+List of treatments offered, with clean cards and animations.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### ⭐ How It Works  
+Explains the consultation and therapy process in simple steps.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### ⭐ Testimonials  
+Real patient experiences displayed in a carousel/slider format.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### ⭐ FAQ  
+A collapsible list answering common queries.
+
+### ⭐ Contact + Appointment Booking  
+Built using **EmailJS**:
+- Users submit their name, email, phone, and message.
+- An appointment request is delivered directly to the clinic email.
+- Form includes validation + proper success/error UI.
+
+### ⭐ Footer  
+Social links, address, phone number, timings.
+
+---
+
+## 📂 Pages / Components
+
+The homepage is built using the following components:
+
+```
+<Hero />
+<About />
+<Services />
+<HowItWorks />
+<Testimonials />
+<Contact />
+<FAQ />
+<Footer />
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Each component is structured for reusability, responsiveness, and SEO optimization.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠️ Tech Stack
+
+| Category | Tools Used |
+|---------|------------|
+| Frontend | React, Vite, Tailwind CSS |
+| Deployment | Vercel |
+| Animations | Framer Motion |
+| Form Handling | EmailJS |
+| Icons | Lucide Icons |
+
+---
+
+## 📧 Appointment Booking (EmailJS)
+
+The contact section uses **EmailJS** to send appointment requests instantly to the clinic:
+
+### Steps:
+1. Collect user details  
+2. Validate fields  
+3. Send the details to clinic email via EmailJS  
+4. Show success / error toast message  
+
+This improves communication speed and appointment workflow.
+
+---
+
+## ▶️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/SanthoshKumar-PS/Physiotherapy-Clinic.git
+cd gayathri-physiotherapy-clinic
 ```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Setup EmailJS
+Create a `.env` file:
+
+```
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+### 4. Run Development Server
+
+```bash
+npm run dev
+```
+
+### 5. Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 📄 License  
+This project is built for Gayathri Physiotherapy Clinic and is **not permitted** for redistribution without permission.
+
+---
+
+## 🙋 Author
+
+**Santhosh Kumar P S**
+
+-   Email: **santhoshkumarsakthi2003@gmail.com**
+-   GitHub: **https://github.com/SanthoshKumar-PS**
+---
